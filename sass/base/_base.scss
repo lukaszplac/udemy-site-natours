@@ -1,0 +1,17 @@
+
+
+/*reset*/
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    /* will be inherited from body */
+    box-sizing: inherit;
+}
+/* 10px because its easier to change all px to rem */
+/* REM does not want for IE below 9 */
+html {
+    //defines what 1rem is, so it`s not typography it`s setting
+    font-size: 62.5%; 
+    /* because we want to have 62.5% of font size provided by browser
+    overriding browser defaults is bad practice so we cant set this font size to px */
+}
