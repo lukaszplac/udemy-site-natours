@@ -5,3 +5,56 @@
         display: table;
     }
 }
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//media query manager
+// 0 - 600px -> phone
+// 600 - 900px -> Tablet portrait
+// 900 - 1200px -> tablet landscape
+// 1200 - 1800px -> is where the normal style applies
+// 1800px : big desktop
+
+//content pozwala wpisac do mixina blok kodu
+// @mixin respond-phone {
+//     @media (max-width: 600px) {
+//         @content;
+//     }
+// }
+
+//ORDER: Base + typography > general layout + grid > page layout > components
+
+/*$breakpoint argument choices*/
+//em units sa najlepsze dla media queries rem nie dziala dobrze wszedzie
+//uzalezniamy breakpointy od wielkosci fontu na wypadek zmiany fontu przez uzytkownika
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 37.5em) { //600px / 16px(default browser font size)
+            @content;
+        }
+    }
+
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) { //900px / 16px itd..
+            @content;
+        }
+    }
+
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) {
+            @content;
+        }
+    }
+
+}
