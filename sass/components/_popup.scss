@@ -9,7 +9,15 @@
     opacity: 0;
     visibility: hidden;
     transition: all .3s;
-    
+
+    //jezeli bedziemy na safari to cackdrop jest supportowany i uzywany jezeli nie to ta czesc zostanie ominieta
+    @supports(-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px); //does not work in chrome :(
+        background-color: rgba($color-black, .3);
+    }
+
+
     &:target { //when url changes to target to the element, html element musi miec id
         opacity: 1;
         visibility: visible;
